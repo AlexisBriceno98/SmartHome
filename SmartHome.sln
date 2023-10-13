@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Device.Fan", "Device.Fan\Device.Fan.csproj", "{51C20FC8-0806-4F9A-B840-B1478D2CAA96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLibrary", "SmartLibrary\SmartLibrary.csproj", "{7542489D-D87C-4E84-B694-4095F86CBB11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedSmartLibrary", "SharedSmartLibrary\SharedSmartLibrary.csproj", "{2ABDBEC4-93EB-4CFC-8200-8D16323EBBCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{51C20FC8-0806-4F9A-B840-B1478D2CAA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51C20FC8-0806-4F9A-B840-B1478D2CAA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51C20FC8-0806-4F9A-B840-B1478D2CAA96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7542489D-D87C-4E84-B694-4095F86CBB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7542489D-D87C-4E84-B694-4095F86CBB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7542489D-D87C-4E84-B694-4095F86CBB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7542489D-D87C-4E84-B694-4095F86CBB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABDBEC4-93EB-4CFC-8200-8D16323EBBCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABDBEC4-93EB-4CFC-8200-8D16323EBBCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABDBEC4-93EB-4CFC-8200-8D16323EBBCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABDBEC4-93EB-4CFC-8200-8D16323EBBCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace SmartLibrary.Models.Devices;
+﻿namespace SharedSmartLibrary.Models.Devices;
 
 public class DeviceConfiguration
 {
@@ -15,3 +15,4 @@ public class DeviceConfiguration
     public int TelemetryInterval { get; set; } = 10000;
 
 }
+
