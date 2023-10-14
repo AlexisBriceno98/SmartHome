@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartControlPanel.Mvvm.Views.DeviceListPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
+             xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
+             x:DataType="viewModels:DeviceListViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="DeviceListPage">
+
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding Devices}" Margin="20">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type viewModels:DeviceItemViewModel}">
+                    <Frame BackgroundColor="#cdcdcd" BorderColor="Transparent" Padding="0">
+                        <Grid Margin="15" RowDefinitions="*,auto">
+
+                            <Label Grid.Row="0" Text="{Binding Icon}" FontFamily="FontAwesomeRegular" FontSize="25">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="True">
+                                        <Setter Property="TextColor" Value="#f1f1f1" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="False">
+                                        <Setter Property="TextColor" Value="#000000" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <VerticalStackLayout Grid.Row="1" Margin="0,10,0,0">
+
+                                <Label Text="{Binding Vendor }" FontSize="12">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="True">
+                                            <Setter Property="TextColor" Value="#f1f1f1" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="False">
+                                            <Setter Property="TextColor" Value="#000000" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+
+                                <Label Text="{Binding DeviceId }" FontSize="15">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="True">
+                                            <Setter Property="TextColor" Value="#f1f1f1" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding IsActive}" Value="False">
+                                            <Setter Property="TextColor" Value="#000000" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame" Binding="{Binding IsActive}" Value="True">
+                                <Setter Property="BackgroundColor" Value="#777777" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="Frame" Binding="{Binding IsActive}" Value="False">
+                                <Setter Property="BackgroundColor" Value="#cdcdcd" />
+                            </DataTrigger>
+                        </Frame.Triggers>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:DeviceListViewModel}}, Path=SendDirectMethodCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+
+</ContentPage>

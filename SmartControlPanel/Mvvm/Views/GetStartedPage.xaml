@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SmartControlPanel.Mvvm.Views.GetStartedPage"
+             xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
+             xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
+             x:DataType="viewModels:GetStartedViewModel"
+             Title="GetStartedPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid ColumnDefinitions="*,*" RowDefinitions="1*, 3*, auto, 2*, auto, 2*" ColumnSpacing="20" RowSpacing="10" Padding="10" VerticalOptions="Start">
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,*" Margin="0, 0, 0, 0">
+            <Button Command="{Binding GoToSettingsCommand}" Grid.Column="1" Text="&#xf013;" TextColor="{StaticResource Primary}" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource NavigationButton}"></Button>
+            <Button Command="{Binding GoBackCommand}" Grid.Column="0" Text="&#xf053;" TextColor="{StaticResource Primary}" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NavigationButton}"></Button>
+        </Grid>
+
+        <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" BorderColor="Transparent">
+            <Grid>
+                <Image Source="getstartedimage.png" Aspect="AspectFill" Opacity="0.30"></Image>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
+                    <Label Text="{Binding CurrentTime}" FontSize="42" Margin="0,-25,0,0" Padding="0" TextColor="{StaticResource Gray200}" HorizontalOptions="Center" VerticalOptions="Start" />
+                    <Label Text="{Binding CurrentDate}" FontSize="13" TextColor="{StaticResource Gray200}" HorizontalOptions="Center" />
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*">
+            <Label Grid.Column="0" Text="Quick Access"></Label>
+
+            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToDeviceListCommand}" NumberOfTapsRequired="1" />
+                </HorizontalStackLayout.GestureRecognizers>
+
+                <Label Text="All Devices" ></Label>
+                <Label Text="&#xf054;" FontFamily="FontAwesomeRegular" Margin="3, 2, 0, 0"></Label>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <Frame Grid.Row="3" Grid.Column="0" BorderColor="Transparent" Padding="12">
+            <Grid RowDefinitions="auto,*" ColumnDefinitions="*,*">
+                <Label Text="&#xf023;" FontFamily="FontAwesomeRegular" Grid.Row="0" Grid.Column="0" VerticalOptions="Start" FontSize="36"/>
+                <Switch x:Name="DeviceSwitch" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start"/>
+
+                <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                    <Label  Text="Galapagos Inc©" FontSize="8" TextColor="{StaticResource Gray300}"/>
+                    <Label Text="Smart Lock™" FontSize="15"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        <Frame Grid.Row="3" Grid.Column="1"></Frame>
+        <Label Grid.Row="4" Grid.ColumnSpan="2" Text="Favorite Device"></Label>
+        <Frame Grid.Row="5" Grid.ColumnSpan="2"></Frame>
+    </Grid>
+
+</ContentPage>

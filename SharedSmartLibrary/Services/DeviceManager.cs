@@ -17,6 +17,11 @@ public class DeviceManager
         Task.FromResult(StartAsync());
     }
 
+    public DeviceManager()
+    {
+        
+    }
+
     public bool AllowSending() => _config.AllowSending;
 
 

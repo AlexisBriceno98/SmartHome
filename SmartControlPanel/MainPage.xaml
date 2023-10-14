@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartControlPanel.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
+             xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
+             x:DataType="viewModels:MainViewModel"
+              Shell.NavBarIsVisible="False">
+
+    <StackLayout x:Name="MainLayout" VerticalOptions="Center" Spacing="20">
+        <Image x:Name="infinity" Source="infinity.png" Margin="0, -100, 0, 0"/>
+        <Label Text="Welcome to your Smart Home" Margin="0, -50, 0, 0" HorizontalOptions="CenterAndExpand"/>
+        <Button Command="{Binding GoToGetStartedCommand}" Text="Get Started" BackgroundColor="{StaticResource Primary}" TextColor="{StaticResource Secondary}"
+        CornerRadius="10" Margin="60, 10, 60, 0"/>
+        <Button Command="{Binding GoToSettingsCommand}" Text="Settings" BackgroundColor="{StaticResource Primary}" TextColor="{StaticResource Secondary}"
+        CornerRadius="10" Margin="60, 5, 60, 0"/>
+    </StackLayout>
+
+</ContentPage>

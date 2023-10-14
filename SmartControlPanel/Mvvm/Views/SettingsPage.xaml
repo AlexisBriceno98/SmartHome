@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SmartControlPanel.Mvvm.Views.SettingsPage"
+             xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
+             xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
+             x:DataType="viewModels:SettingsViewModel"
+             Title="SettingsPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="auto, *" Padding="10" VerticalOptions="Start">
+
+        <Button Grid.Row="0" Command="{Binding GoBackCommand}" Text="&#xf00d;" Style="{StaticResource NavigationButton}" HorizontalOptions="End" VerticalOptions="Start"></Button>
+
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Start">
+            <Label Text="Global Settings"/>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="IP-Address" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="192.168.1.101" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Subnet Mask" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="255.255.255.0" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Gateway" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="192.168.1.1" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+            <Label Text="Azure Settings" Margin="0, 30, 0, 0"/>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Azure-Iot-Hub" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="alexis-iothub.azure-devices.net" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Shared AccessName" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="iothubowner" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*, *">
+                <Label Grid.Column="0" Text="Consumer Group" FontSize="14" TextColor="{StaticResource Gray100}" ></Label>
+                <Label Grid.Column="1" HorizontalOptions="End" Text="smart-home-device" FontSize="14" TextColor="{StaticResource Gray400}"/>
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
