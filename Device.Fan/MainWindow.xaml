@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Device.Fan"
         mc:Ignorable="d"
            Title="" Height="250" Width="200">
-    <Grid>
+    <Grid Background="#D8AF5F">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
@@ -14,7 +14,7 @@
 
         <Grid Grid.Row="0">
             <TextBlock FontFamily="{StaticResource FontAwesome-Regular}" Text="&#xe004;" FontSize="120" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Ellipse Height="80" Width="80" Margin="2 -12 0 0" Fill="White" />
+            <Ellipse Height="80" Width="80" Margin="2 -12 0 0" Fill="#D8AF5F" />
             <TextBlock RenderTransformOrigin="0.5 0.5" FontFamily="{StaticResource FontAwesome-Solid}" Text="&#xf863;" FontSize="80" Margin="0 -14 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock.RenderTransform>
                     <RotateTransform x:Name="FanBlade" Angle="0" />

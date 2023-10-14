@@ -6,7 +6,8 @@
              xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
              xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
              x:DataType="viewModels:MainViewModel"
-              Shell.NavBarIsVisible="False">
+              Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Secondary}">
 
     <StackLayout x:Name="MainLayout" VerticalOptions="Center" Spacing="20">
         <Image x:Name="infinity" Source="infinity.png" Margin="0, -100, 0, 0"/>

@@ -7,9 +7,10 @@
              xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
              x:DataType="viewModels:GetStartedViewModel"
              Title="GetStartedPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Secondary}">
 
-    <Grid ColumnDefinitions="*,*" RowDefinitions="1*, 3*, auto, 2*, auto, 2*" ColumnSpacing="20" RowSpacing="10" Padding="10" VerticalOptions="Start">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="1*, 3*, auto, 2*, auto, 2*" ColumnSpacing="20" RowSpacing="10" Padding="10" VerticalOptions="Start" >
 
         <Grid Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,*" Margin="0, 0, 0, 0">
             <Button Command="{Binding GoToSettingsCommand}" Grid.Column="1" Text="&#xf013;" TextColor="{StaticResource Primary}" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource NavigationButton}"></Button>
@@ -42,18 +43,39 @@
 
         <Frame Grid.Row="3" Grid.Column="0" BorderColor="Transparent" Padding="12">
             <Grid RowDefinitions="auto,*" ColumnDefinitions="*,*">
-                <Label Text="&#xf023;" FontFamily="FontAwesomeRegular" Grid.Row="0" Grid.Column="0" VerticalOptions="Start" FontSize="36"/>
+                <Label Text="&#xe004;" FontFamily="FontAwesomeRegular" Grid.Row="0" Grid.Column="0" VerticalOptions="Start" FontSize="36"/>
                 <Switch x:Name="DeviceSwitch" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start"/>
 
                 <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
                     <Label  Text="Galapagos Inc©" FontSize="8" TextColor="{StaticResource Gray300}"/>
-                    <Label Text="Smart Lock™" FontSize="15"/>
+                    <Label Text="Smart Fan" FontSize="15"/>
                 </VerticalStackLayout>
             </Grid>
         </Frame>
         <Frame Grid.Row="3" Grid.Column="1"></Frame>
-        <Label Grid.Row="4" Grid.ColumnSpan="2" Text="Favorite Device"></Label>
-        <Frame Grid.Row="5" Grid.ColumnSpan="2"></Frame>
+        <Label Grid.Row="4" Grid.ColumnSpan="2" Text="Weather"></Label>
+        <Frame Grid.Row="5" Grid.ColumnSpan="2">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                <Label 
+            FontFamily="FontAwesomeRegular"
+            FontSize="50"
+            Text="{Binding Condition, FallbackValue=&#xe137;}" 
+            TextColor="{StaticResource Gray100}" />
+
+                <Label FontSize="24" Margin="15,5,0,0" TextColor="{StaticResource Gray100}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Temperature, FallbackValue=--}" FontSize="28"/>
+                            <Span Text="°C" FontSize="18" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+
+        </Frame>
     </Grid>
 
 </ContentPage>

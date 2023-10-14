@@ -39,7 +39,7 @@
 
     <Style x:Key="NavigationButton" TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Tertiary}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource Tertiary}}" />
         <Setter Property="FontFamily" Value="FontAwesomeRegular"/>
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="CornerRadius" Value="25"/>

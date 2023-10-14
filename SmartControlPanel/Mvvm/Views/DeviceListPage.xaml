@@ -7,11 +7,15 @@
              xmlns:views="clr-namespace:SmartControlPanel.Mvvm.Views"
              x:DataType="viewModels:DeviceListViewModel"
              Shell.NavBarIsVisible="False"
-             Title="DeviceListPage">
+             Title="DeviceListPage"
+             BackgroundColor="{StaticResource Secondary}">
 
 
-    <Grid>
-        <CollectionView ItemsSource="{Binding Devices}" Margin="20">
+    <Grid RowDefinitions="auto, *" Padding="10" VerticalOptions="Start">
+
+        <Button Grid.Row="0" Command="{Binding GoBackCommand}" Text="&#xf00d;" Style="{StaticResource NavigationButton}" TextColor="{StaticResource Primary}" HorizontalOptions="End" VerticalOptions="Start"></Button>
+
+        <CollectionView ItemsSource="{Binding Devices}"  Margin="20,60,0,20">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10" />
             </CollectionView.ItemsLayout>

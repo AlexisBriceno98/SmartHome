@@ -95,4 +95,10 @@ public partial class DeviceListViewModel : ObservableObject
 
         return null!;
     }
+
+    [RelayCommand]
+    async Task GoBack()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }

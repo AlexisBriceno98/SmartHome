@@ -7,7 +7,8 @@
              xmlns:viewModels="clr-namespace:SmartControlPanel.Mvvm.ViewModels"
              x:DataType="viewModels:SettingsViewModel"
              Title="SettingsPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Secondary}">
 
     <Grid RowDefinitions="auto, *" Padding="10" VerticalOptions="Start">
 
