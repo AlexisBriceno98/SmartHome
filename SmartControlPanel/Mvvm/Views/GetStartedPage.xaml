@@ -57,7 +57,7 @@
                 <Label Text="Coming Soon" FontFamily="FontAwesomesSolid" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Start" FontSize="16"/>
                    <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="0,4,0,0">
                     <Label Text="Galapagos Inc©" FontSize="8" TextColor="{StaticResource Gray300}"/>
-                    <Label Text="Smart Fan" FontSize="15"/>
+                    <Label Text="Smart Device" FontSize="15"/>
                 </VerticalStackLayout>
             </Grid>
         </Frame>
