@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using SharedSmartLibrary.Models.Devices;
 using System.Text;
+using Microsoft.Azure.Devices.Shared;
 
 namespace SharedSmartLibrary.Services;
 
@@ -49,6 +50,21 @@ public class DeviceManager
                 return new MethodResponse(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(res)), 404);
         }
 
+        await ReportFanPowerStatusAsync();
         return new MethodResponse(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(res)), 200);
     }
+
+    public async Task ReportFanPowerStatusAsync()
+    {
+        var twinProperties = new TwinCollection();
+        twinProperties["power"] = _config.AllowSending ? "start" : "stop";
+        await _client.UpdateReportedPropertiesAsync(twinProperties);
+    }
+
+    public async Task<string> GetFanPowerStatusAsync()
+    {
+        var twin = await _client.GetTwinAsync();
+        return twin.Properties.Reported["power"];
+    }
+
 }

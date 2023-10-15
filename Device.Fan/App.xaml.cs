@@ -24,6 +24,7 @@ namespace Device.Fan
                     services.AddSingleton(new DeviceConfiguration(config.Configuration.GetConnectionString("Device")!));
                     services.AddSingleton<DeviceManager>();
                     services.AddSingleton<NetworkManager>();
+                    services.AddSingleton<IotHubService>();
                 })
                 .Build();
         }

@@ -43,20 +43,16 @@ namespace SmartControlPanel
             builder.Services.AddSingleton<GetStartedViewModel>();
             builder.Services.AddSingleton<GetStartedPage>();
 
-            builder.Services.AddSingleton<DeviceManager>();
-            builder.Services.AddSingleton<MauiDeviceManager>();
-            builder.Services.AddDbContext<DataContext>(x => x.UseSqlite($"Data Source={DatabasePathFinder.GetPath()}"));
-
             builder.Services.AddSingleton<DeviceListViewModel>();
             builder.Services.AddSingleton<DeviceListPage>();
 
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<SettingsPage>();
 
-
-
-
-
+            builder.Services.AddSingleton<DeviceManager>();
+            builder.Services.AddSingleton<MauiDeviceManager>();
+            builder.Services.AddDbContext<DataContext>(x => x.UseSqlite($"Data Source={DatabasePathFinder.GetPath()}"));
+            builder.Services.AddSingleton<IotHubService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
