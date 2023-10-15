@@ -3,45 +3,52 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace Device.Fan;
-
-public partial class MainWindow : Window
+namespace Device.Fan
 {
-    private readonly DeviceManager _deviceManager;
-    private readonly NetworkManager _networkManager;
-
-    public MainWindow(DeviceManager deviceManager, NetworkManager networkManager)
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        private readonly DeviceManager _deviceManager;
+        private readonly NetworkManager _networkManager;
 
-        _deviceManager = deviceManager;
-        _networkManager = networkManager;
-
-        Task.WhenAll(ToggleFanStateAsync(), CheckConnectivityAsync());
-    }
-
-
-    private async Task ToggleFanStateAsync()
-    {
-        Storyboard fan = (Storyboard)this.FindResource("FanStoryboard");
-
-        while (true)
+        public MainWindow(DeviceManager deviceManager, NetworkManager networkManager)
         {
-            if (_deviceManager.AllowSending())
-                fan.Begin();
-            else
-                fan.Stop();
+            InitializeComponent();
 
-            await Task.Delay(1000);
+            _deviceManager = deviceManager;
+            _networkManager = networkManager;
+
+            SendMessageToCosmosDb();
+
+            Task.WhenAll(ToggleFanStateAsync(), CheckConnectivityAsync());
         }
-    }
 
-    private async Task CheckConnectivityAsync()
-    {
-        while (true)
+        private async void SendMessageToCosmosDb()
         {
-            ConnectivityStatus.Text = await _networkManager.CheckConnectivityAsync();
-            await Task.Delay(1000);
+            await _deviceManager.SendMessageAsync("[\"Message sent\"]");
+        }
+
+        private async Task ToggleFanStateAsync()
+        {
+            Storyboard fan = (Storyboard)this.FindResource("FanStoryboard");
+
+            while (true)
+            {
+                if (_deviceManager.AllowSending())
+                    fan.Begin();
+                else
+                    fan.Stop();
+
+                await Task.Delay(1000);
+            }
+        }
+
+        private async Task CheckConnectivityAsync()
+        {
+            while (true)
+            {
+                ConnectivityStatus.Text = await _networkManager.CheckConnectivityAsync();
+                await Task.Delay(1000);
+            }
         }
     }
 }
