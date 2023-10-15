@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace SharedSmartLibrary.Entities;
 
-public class SettingsEntity
+public class SmartAppSettings
 {
     [Key]
     public string ConnectionString { get; set; } = null!;

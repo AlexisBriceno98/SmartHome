@@ -7,13 +7,14 @@ using SmartControlPanel.Services;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using SmartControlPanel.Mvvm.Views;
+using SharedSmartLibrary.Contexts;
 
 namespace SmartControlPanel.Mvvm.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
     private readonly MauiDeviceManager _mauiDeviceManager;
-    private readonly DataContext _context;
+    private readonly SmartHomeDbContext _context;
 
     [ObservableProperty]
     bool isConfigured;
@@ -21,32 +22,8 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     ObservableCollection<DeviceItemViewModel> devices;
 
-    [RelayCommand]
-    public async Task SendDirectMethod(DeviceItemViewModel deviceItem)
-    {
-        try
-        {
-            var methodName = string.Empty;
 
-            if (!deviceItem.IsActive)
-            {
-                deviceItem.IsActive = true;
-                methodName = "start";
-            }
-            else
-            {
-                deviceItem.IsActive = false;
-                methodName = "stop";
-            }
-
-            await _mauiDeviceManager.SendDirectMethodAsync(deviceItem.DeviceId, methodName);
-        }
-        catch (Exception ex) { Debug.WriteLine(ex.Message); deviceItem.IsActive = false; }
-    }
-
-
-
-    public MainViewModel(MauiDeviceManager deviceManager, DataContext context)
+    public MainViewModel(MauiDeviceManager deviceManager, SmartHomeDbContext context)
     {
         _mauiDeviceManager = deviceManager;
         _context = context;
@@ -72,10 +49,31 @@ public partial class MainViewModel : ObservableObject
             .Select(device => new DeviceItemViewModel(device)).ToList());
 
         _mauiDeviceManager.DevicesUpdated += UpdateDeviceList;
-
-
-
     }
+
+    [RelayCommand]
+    public async Task SendDirectMethod(DeviceItemViewModel deviceItem)
+    {
+        try
+        {
+            var methodName = string.Empty;
+
+            if (!deviceItem.IsActive)
+            {
+                deviceItem.IsActive = true;
+                methodName = "start";
+            }
+            else
+            {
+                deviceItem.IsActive = false;
+                methodName = "stop";
+            }
+
+            await _mauiDeviceManager.SendDirectMethodAsync(deviceItem.DeviceId, methodName);
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); deviceItem.IsActive = false; }
+    }
+
 
     private void UpdateDeviceList()
     {
@@ -85,7 +83,7 @@ public partial class MainViewModel : ObservableObject
 
     private async Task AddConnectionStringAsync(string connectionString)
     {
-        _context.Settings.Add(new SharedSmartLibrary.Entities.SettingsEntity { ConnectionString = connectionString });
+        _context.Settings.Add(new SharedSmartLibrary.Entities.SmartAppSettings{ ConnectionString = connectionString });
         await _context.SaveChangesAsync();
     }
 
@@ -97,6 +95,20 @@ public partial class MainViewModel : ObservableObject
 
         return null!;
     }
+
+    //private async Task CheckConfigurationAsync()
+    //{
+    //    try
+    //    {
+    //        if (await _context.Settings.AnyAsync())
+    //        {
+    //            await _context.InitializeAsync();
+    //            await Shell.Current.GoToAsync(nameof(OverviewPage));
+    //        }
+
+    //    }
+    //    catch (Exception ex) { Debug.WriteLine(ex.Message); }
+    //}
 
     [RelayCommand]
     async Task GoToGetStarted()

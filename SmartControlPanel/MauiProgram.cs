@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SharedSmartLibrary;
+using SharedSmartLibrary.Contexts;
 using SharedSmartLibrary.Services;
 using SmartControlPanel.Mvvm.ViewModels;
 using SmartControlPanel.Mvvm.Views;
@@ -51,7 +52,7 @@ namespace SmartControlPanel
 
             builder.Services.AddSingleton<DeviceManager>();
             builder.Services.AddSingleton<MauiDeviceManager>();
-            builder.Services.AddDbContext<DataContext>(x => x.UseSqlite($"Data Source={DatabasePathFinder.GetPath()}"));
+            builder.Services.AddDbContext<SmartHomeDbContext>(x => x.UseSqlite($"Data Source={DatabasePathFinder.GetPath()}", x => x.MigrationsAssembly(nameof(SharedSmartLibrary))));
             builder.Services.AddSingleton<IotHubService>();
 
 #if DEBUG

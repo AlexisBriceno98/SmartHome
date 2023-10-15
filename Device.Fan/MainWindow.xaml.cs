@@ -34,7 +34,6 @@ public partial class MainWindow : Window
 
             await Task.Delay(1000);
         }
-        await _deviceManager.ReportFanPowerStatusAsync();
     }
 
     private async Task CheckConnectivityAsync()

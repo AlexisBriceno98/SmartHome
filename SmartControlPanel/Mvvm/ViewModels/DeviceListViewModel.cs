@@ -5,13 +5,14 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using SharedSmartLibrary.Contexts;
 
 namespace SmartControlPanel.Mvvm.ViewModels;
 
 public partial class DeviceListViewModel : ObservableObject
 {
     private readonly MauiDeviceManager _mauiDeviceManager;
-    private readonly DataContext _context;
+    private readonly SmartHomeDbContext _context;
 
     [ObservableProperty]
     bool isConfigured;
@@ -44,7 +45,7 @@ public partial class DeviceListViewModel : ObservableObject
 
 
 
-    public DeviceListViewModel(MauiDeviceManager deviceManager, DataContext context)
+    public DeviceListViewModel(MauiDeviceManager deviceManager, SmartHomeDbContext context)
     {
         _mauiDeviceManager = deviceManager;
         _context = context;
@@ -83,7 +84,7 @@ public partial class DeviceListViewModel : ObservableObject
 
     private async Task AddConnectionStringAsync(string connectionString)
     {
-        _context.Settings.Add(new SharedSmartLibrary.Entities.SettingsEntity { ConnectionString = connectionString });
+        _context.Settings.Add(new SharedSmartLibrary.Entities.SmartAppSettings { ConnectionString = connectionString });
         await _context.SaveChangesAsync();
     }
 

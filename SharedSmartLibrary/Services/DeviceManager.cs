@@ -18,11 +18,6 @@ public class DeviceManager
         Task.FromResult(StartAsync());
     }
 
-    public DeviceManager()
-    {
-        
-    }
-
     public bool AllowSending() => _config.AllowSending;
 
 
@@ -67,4 +62,9 @@ public class DeviceManager
         return twin.Properties.Reported["power"];
     }
 
+    public async Task SendMessageAsync(string content)
+    {
+        var message = new Message(Encoding.UTF8.GetBytes(content));
+        await _client!.SendEventAsync(message);
+    }
 }
