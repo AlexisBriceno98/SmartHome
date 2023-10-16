@@ -51,17 +51,10 @@ public partial class DeviceListViewModel : ObservableObject
         _context = context;
 
         IsConfigured = false;
-
-        //		var result = Task.FromResult(GetConnectionStringAsync()).Result;
-        //		var connectionstring = result.Result;
-        //		if (connectionstring != null)
         IsConfigured = true;
 
         if (!IsConfigured)
         {
-            //Task.Run(() => Shell.Current.GoToAsync(nameof(GetStartedPage)));
-            //			Task.Run(() => AddConnectionStringAsync("HostName=kyh-iothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=M/vLVpxoLM7Blwqdsc8YxXaW2A7rQRLjzAIoTFa78jI="));
-
             IsConfigured = true;
         }
 
